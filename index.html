@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>XV Años Nahomi Corzo Torija</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+background:black;
+overflow:hidden;
+font-family:'Cormorant Garamond', serif;
+color:white;
+}
+
+/* SOBRE INICIAL */
+
+#inicio{
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(circle,#000,#2a0015);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.sobre{
+width:340px;
+height:210px;
+background:linear-gradient(145deg,#ffd700,#fff);
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+font-family:'Great Vibes';
+font-size:38px;
+color:#5a0033;
+box-shadow:0 0 60px gold;
+animation:flotar 3s infinite ease-in-out;
+border-radius:10px;
+}
+
+@keyframes flotar{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-15px)}
+}
+
+/* ESCENA */
+
+#escena{
+position:fixed;
+width:100%;
+height:100%;
+opacity:0;
+transition:2s;
+}
+
+/* FONDO CINEMATOGRAFICO */
+
+#fondo{
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+animation:zoom 18s infinite alternate ease-in-out;
+}
+
+@keyframes zoom{
+from{transform:scale(1)}
+to{transform:scale(1.15)}
+}
+
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(to top,rgba(0,0,0,.92),rgba(0,0,0,.2));
+}
+
+/* CONTENIDO */
+
+.contenido{
+position:absolute;
+bottom:20px;
+width:100%;
+text-align:center;
+padding:20px;
+animation:fadeUp 2s ease;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(40px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+/* NOMBRE */
+
+.nombre{
+font-family:'Great Vibes';
+font-size:65px;
+background:linear-gradient(90deg,#fff,#ffd700,#fff);
+background-size:200%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:brillo 6s linear infinite;
+}
+
+@keyframes brillo{
+0%{background-position:0%}
+100%{background-position:200%}
+}
+
+.texto{
+font-size:19px;
+margin-top:8px;
+}
+
+.titulo{
+font-size:24px;
+margin-top:15px;
+color:#ffd700;
+}
+
+/* CONTADOR */
+
+.contador{
+display:flex;
+justify-content:center;
+gap:18px;
+margin-top:15px;
+}
+
+.numero{
+font-size:26px;
+}
+
+/* BOTONES */
+
+.btn{
+display:inline-block;
+margin-top:12px;
+padding:12px 28px;
+background:linear-gradient(45deg,#ffd700,#ff69b4);
+border-radius:30px;
+color:white;
+text-decoration:none;
+font-size:17px;
+box-shadow:0 0 15px rgba(255,215,0,.6);
+}
+
+/* MUSICA */
+
+#btnMusica{
+position:absolute;
+top:20px;
+right:20px;
+background:rgba(255,255,255,.2);
+border:none;
+color:white;
+font-size:22px;
+width:50px;
+height:50px;
+border-radius:50%;
+cursor:pointer;
+}
+
+/* PARTICULAS */
+
+.particula{
+position:absolute;
+color:#ffd700;
+animation:subir linear infinite;
+}
+
+@keyframes subir{
+from{transform:translateY(100vh)}
+to{transform:translateY(-10vh)}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="inicio">
+<div class="sobre" onclick="abrir()">
+Abrir Invitación
+</div>
+</div>
+
+<div id="escena">
+
+<div id="fondo"></div>
+<div class="overlay"></div>
+
+<div class="contenido">
+
+<div class="nombre">Nahomi Corzo Torija</div>
+
+<div class="texto">
+Con la bendición de Dios y el amor de mis padres
+</div>
+
+<div class="texto">
+Artemio Corzo Fernández<br>
+Monserrat Torija Aguilar
+</div>
+
+<div class="texto">
+Tengo el honor de invitarte a celebrar mis XV años
+</div>
+
+<div class="contador">
+
+<div>
+<div class="numero" id="dias"></div>
+Días
+</div>
+
+<div>
+<div class="numero" id="horas"></div>
+Horas
+</div>
+
+<div>
+<div class="numero" id="minutos"></div>
+Minutos
+</div>
+
+<div>
+<div class="numero" id="segundos"></div>
+Segundos
+</div>
+
+</div>
+
+<div class="titulo">Ceremonia Religiosa</div>
+
+<div class="texto">
+23 de Mayo del 2026 – 17:00 hrs<br>
+Capilla Nuestra Señora de la Salud
+</div>
+
+<div class="titulo">Recepción</div>
+
+<div class="texto">
+Salón Aivory – 19:00 hrs
+</div>
+
+<div class="texto">
+Código de vestimenta: Formal
+</div>
+
+<div class="texto">
+Confirmar asistencia antes del<br>
+10 de Mayo del 2026
+</div>
+
+<a class="btn"
+href="https://wa.me/9611930065?text=Confirmo mi asistencia a los XV años de Nahomi Corzo Torija"
+target="_blank">
+
+Confirmar asistencia
+
+</a>
+
+</div>
+
+<button id="btnMusica">🎵</button>
+
+</div>
+
+<audio id="musica" loop>
+<source src="musica.mp3">
+</audio>
+
+<script>
+
+/* ABRIR */
+
+function abrir(){
+inicio.style.display="none";
+escena.style.opacity=1;
+musica.play();
+}
+
+/* SLIDESHOW */
+
+let fotos=[
+"foto1.jpg",
+"foto2.jpg",
+"foto3.jpg",
+"foto4.jpg",
+"foto5.jpg"
+];
+
+let i=0;
+
+function cambiar(){
+fondo.style.backgroundImage="url("+fotos[i]+")";
+i=(i+1)%fotos.length;
+}
+
+cambiar();
+setInterval(cambiar,9000);
+
+/* CONTADOR */
+
+let fecha=new Date("May 23, 2026 19:00:00");
+
+setInterval(()=>{
+
+let diff=fecha-new Date();
+
+dias.innerHTML=Math.floor(diff/86400000);
+horas.innerHTML=Math.floor(diff/3600000)%24;
+minutos.innerHTML=Math.floor(diff/60000)%60;
+segundos.innerHTML=Math.floor(diff/1000)%60;
+
+},1000);
+
+/* MUSICA */
+
+btnMusica.onclick=()=>{
+if(musica.paused)musica.play();
+else musica.pause();
+};
+
+/* PARTICULAS */
+
+setInterval(()=>{
+let p=document.createElement("div");
+p.className="particula";
+p.innerHTML="✦";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(Math.random()*5+5)+"s";
+document.body.appendChild(p);
+setTimeout(()=>p.remove(),10000);
+},300);
+
+</script>
+
+</body>
+</html>
