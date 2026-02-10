@@ -7,39 +7,44 @@
 
 <title>XV Años Nahomi Corzo Torija</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;500&family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;500&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
 
-html, body{
+/* RESET */
+
+*{
 margin:0;
 padding:0;
-background:black;
+box-sizing:border-box;
+}
+
+body{
 font-family:'Poppins',sans-serif;
-overflow-x:hidden;
+background:black;
 color:white;
+overflow-x:hidden;
 }
 
-/* VIDEO FONDO */
+/* FONDO CINEMATOGRAFICO */
 
-.video-bg{
+body::before{
+content:"";
 position:fixed;
-top:0;
-left:0;
 width:100%;
 height:100%;
-object-fit:cover;
+background:
+linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.9)),
+url("Foto1.jpg");
+background-size:cover;
+background-position:center;
 z-index:-2;
+animation:zoomFondo 20s infinite alternate ease-in-out;
 }
 
-/* OVERLAY */
-
-.overlay{
-position:fixed;
-width:100%;
-height:100%;
-background:radial-gradient(circle, rgba(0,0,0,.2), rgba(0,0,0,.9));
-z-index:-1;
+@keyframes zoomFondo{
+from{transform:scale(1)}
+to{transform:scale(1.2)}
 }
 
 /* SOBRE */
@@ -51,30 +56,18 @@ height:100%;
 display:flex;
 justify-content:center;
 align-items:center;
-z-index:10;
 background:black;
+z-index:999;
 }
 
 #sobre{
-width:280px;
-height:180px;
-background:linear-gradient(145deg,#e6c200,#b89600);
-border-radius:10px;
-position:relative;
+width:300px;
+height:190px;
+background:linear-gradient(145deg,#FFD700,#C5A100);
+border-radius:12px;
 cursor:pointer;
-box-shadow:0 0 40px gold;
+box-shadow:0 0 50px gold;
 animation:flotar 3s infinite ease-in-out;
-}
-
-#sobre:before{
-content:"";
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:linear-gradient(145deg,#ffd700,#b89600);
-clip-path:polygon(0 0,100% 0,50% 50%);
 }
 
 @keyframes flotar{
@@ -93,35 +86,43 @@ display:none;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-z-index:9;
 text-align:center;
 padding:20px;
+z-index:998;
 }
 
 .titulo{
 font-family:'Great Vibes';
-font-size:60px;
+font-size:55px;
 color:gold;
 }
 
-.sub{
+.texto{
 font-family:'Cormorant Garamond';
-font-size:24px;
+font-size:22px;
+margin-top:15px;
 }
 
 .btn{
 margin-top:30px;
-padding:15px 40px;
-background:gold;
+padding:15px 35px;
 border:none;
+background:gold;
 font-size:18px;
 cursor:pointer;
+border-radius:30px;
 }
 
 /* CONTENIDO */
 
 #contenido{
 display:none;
+animation:fade 2s;
+}
+
+@keyframes fade{
+from{opacity:0}
+to{opacity:1}
 }
 
 /* SECCIONES */
@@ -132,10 +133,9 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-text-align:center;
-padding:40px 20px;
 background:rgba(0,0,0,.6);
-backdrop-filter:blur(10px);
+backdrop-filter:blur(8px);
+padding:40px 20px;
 }
 
 /* GALERIA PREMIUM */
@@ -149,36 +149,47 @@ margin-top:30px;
 }
 
 .galeria img{
-width:160px;
-height:220px;
+width:150px;
+height:210px;
 object-fit:cover;
 border-radius:15px;
 box-shadow:0 0 20px gold;
-transition:.5s;
+opacity:0;
+transform:translateY(40px);
+animation:aparecer 1s forwards;
 }
 
-.galeria img:hover{
-transform:scale(1.1);
-box-shadow:0 0 40px gold;
+.galeria img:nth-child(1){animation-delay:.3s}
+.galeria img:nth-child(2){animation-delay:.6s}
+.galeria img:nth-child(3){animation-delay:.9s}
+.galeria img:nth-child(4){animation-delay:1.2s}
+.galeria img:nth-child(5){animation-delay:1.5s}
+
+@keyframes aparecer{
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 /* CONTADOR */
 
 #contador{
 font-size:30px;
-margin-top:20px;
 color:gold;
+margin-top:20px;
 }
 
-/* BOTON WHATSAPP */
+/* WHATSAPP */
 
 .whatsapp{
 margin-top:30px;
 padding:15px 30px;
 background:#25D366;
-color:white;
-text-decoration:none;
 border-radius:30px;
+text-decoration:none;
+color:white;
+font-size:18px;
 }
 
 /* MUSICA */
@@ -187,30 +198,29 @@ border-radius:30px;
 position:fixed;
 bottom:20px;
 right:20px;
-background:gold;
-border:none;
-border-radius:50%;
 width:60px;
 height:60px;
-font-size:25px;
-cursor:pointer;
-z-index:20;
-}
-
-/* EFECTO BRILLOS */
-
-.brillo{
-position:fixed;
-width:5px;
-height:5px;
-background:white;
+border:none;
 border-radius:50%;
-animation:brillar linear infinite;
+background:gold;
+font-size:24px;
+cursor:pointer;
+z-index:999;
 }
 
-@keyframes brillar{
-from{transform:translateY(0)}
-to{transform:translateY(100vh)}
+/* EFECTO PETALOS */
+
+.petalo{
+position:fixed;
+top:-20px;
+font-size:18px;
+animation:caer linear forwards;
+}
+
+@keyframes caer{
+to{
+transform:translateY(110vh) rotate(360deg);
+}
 }
 
 /* RESPONSIVE */
@@ -218,11 +228,11 @@ to{transform:translateY(100vh)}
 @media(max-width:600px){
 
 .titulo{
-font-size:42px;
+font-size:40px;
 }
 
-.sub{
-font-size:20px;
+.texto{
+font-size:19px;
 }
 
 .galeria img{
@@ -238,8 +248,6 @@ height:170px;
 
 <body>
 
-<div class="overlay"></div>
-
 <!-- SOBRE -->
 
 <div id="sobreContainer">
@@ -252,7 +260,8 @@ height:170px;
 
 <div class="titulo">Nahomi Corzo Torija</div>
 
-<div class="sub">
+<div class="texto">
+
 Con la bendición de Dios y de mis padres<br><br>
 
 Artemio Corzo Fernández<br>
@@ -260,7 +269,9 @@ Monserrat Torija Aguilar
 
 </div>
 
-<button class="btn" onclick="abrirInvitacion()">Ver Invitación</button>
+<button class="btn" onclick="abrirInvitacion()">
+Ver Invitación
+</button>
 
 </div>
 
@@ -288,12 +299,14 @@ Monserrat Torija Aguilar
 
 <section class="seccion">
 
-<div class="titulo">Ceremonia Religiosa</div>
+<div class="titulo">Ceremonia</div>
 
-<div class="sub">
-23 de Mayo 2026<br>
+<div class="texto">
+
+23 Mayo 2026<br>
 17:00 hrs<br>
 Capilla Nuestra Señora de la Salud
+
 </div>
 
 </section>
@@ -302,9 +315,11 @@ Capilla Nuestra Señora de la Salud
 
 <div class="titulo">Recepción</div>
 
-<div class="sub">
+<div class="texto">
+
 Salón Aivory<br>
 19:00 hrs
+
 </div>
 
 <a class="whatsapp"
@@ -315,9 +330,8 @@ Confirmar asistencia
 
 </a>
 
-<div class="sub">
-Confirmar antes del<br>
-10 de mayo de 2026
+<div class="texto">
+Confirmar antes del 10 de mayo 2026
 </div>
 
 </section>
@@ -339,9 +353,7 @@ let musica=document.getElementById("musica")
 function abrirCarta(){
 
 document.getElementById("sobreContainer").style.display="none"
-
 document.getElementById("carta").style.display="flex"
-
 musica.play()
 
 }
@@ -349,7 +361,6 @@ musica.play()
 function abrirInvitacion(){
 
 document.getElementById("carta").style.display="none"
-
 document.getElementById("contenido").style.display="block"
 
 }
@@ -361,16 +372,15 @@ let fecha=new Date("May 23, 2026 17:00:00").getTime()
 setInterval(()=>{
 
 let ahora=new Date().getTime()
-
 let d=fecha-ahora
 
 let dias=Math.floor(d/(1000*60*60*24))
-let h=Math.floor((d%(1000*60*60*24))/(1000*60*60))
-let m=Math.floor((d%(1000*60*60))/(1000*60))
-let s=Math.floor((d%(1000*60))/1000)
+let horas=Math.floor((d%(1000*60*60*24))/(1000*60*60))
+let min=Math.floor((d%(1000*60*60))/(1000*60))
+let seg=Math.floor((d%(1000*60))/1000)
 
 document.getElementById("contador").innerHTML=
-dias+" días "+h+" hrs "+m+" min "+s+" seg"
+dias+" días "+horas+" hrs "+min+" min "+seg+" seg"
 
 },1000)
 
@@ -383,26 +393,23 @@ else musica.pause()
 
 }
 
-/* BRILLOS */
+/* PETALOS */
 
 setInterval(()=>{
 
-let b=document.createElement("div")
+let p=document.createElement("div")
+p.className="petalo"
+p.innerHTML="🌸"
+p.style.left=Math.random()*100+"%"
+p.style.animationDuration=(Math.random()*5+5)+"s"
 
-b.className="brillo"
+document.body.appendChild(p)
 
-b.style.left=Math.random()*100+"%"
+setTimeout(()=>p.remove(),10000)
 
-b.style.animationDuration=(Math.random()*5+5)+"s"
-
-document.body.appendChild(b)
-
-setTimeout(()=>b.remove(),8000)
-
-},300)
+},400)
 
 </script>
 
 </body>
 </html>
-
